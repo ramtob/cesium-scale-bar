@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cesium Scale Ruler Example</title>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.88/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        #cesiumContainer {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .cesium-scaleBar {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(42, 42, 42, 0.8);
+            padding: 5px;
+            border-radius: 4px;
+            color: white;
+            font-family: sans-serif;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .scale-bar {
+            height: 10px;
+            background-color: white;
+            margin-right: 5px;
+            position: relative;
+        }
+        .scale-bar::before, .scale-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            background-color: black;
+        }
+        .scale-bar::before {
+            left: 0;
+        }
+        .scale-bar::after {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.88/Build/Cesium/Cesium.js"></script>
+    <script src="scaleBar.js"></script>
+</body>
+</html>

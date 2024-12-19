@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cesium Scale Ruler Example</title>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.88/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        #cesiumContainer {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .cesium-scaleBar {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(42, 42, 42, 0.8);
+            padding: 5px;
+            border-radius: 4px;
+            color: white;
+            font-family: sans-serif;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .scale-bar {
+            height: 10px;
+            background-color: white;
+            margin-right: 5px;
+            position: relative;
+        }
+        .scale-bar::before, .scale-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            background-color: black;
+        }
+        .scale-bar::before {
+            left: 0;
+        }
+        .scale-bar::after {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.88/Build/Cesium/Cesium.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyZTU4ODhjYi0yNTI2LTQ3OGQtOWRiMC03OGY4NzFmODRhMDciLCJpZCI6MTE0MjEsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NTg5NDYyMTl9.ZciTakOUpR3h8bItUzE2QqfLEna8i9I3KeljlEKsXcY';
+
+            var viewer = new Cesium.Viewer('cesiumContainer', {
+        animation: false,
+        timeline: false});
+
+            function createScaleBar(viewer) {
+                var scaleBarContainer = document.createElement('div');
+                scaleBarContainer.className = 'cesium-scaleBar';
+                viewer.container.appendChild(scaleBarContainer);
+
+                var scaleBar = document.createElement('div');
+                scaleBar.className = 'scale-bar';
+                scaleBarContainer.appendChild(scaleBar);
+
+                var scaleLabel = document.createElement('span');
+                scaleBarContainer.appendChild(scaleLabel);
+
+                function updateScaleBar() {
+                    var cameraHeight = viewer.camera.positionCartographic.height;
+                    var scale = Math.pow(10, Math.floor(Math.log(cameraHeight) / Math.LN10));
+                    var distance = scale / 1000; // Convert to kilometers
+
+                    // Adjust the scale bar length based on the distance
+                    var scaleBarLength = 100; // Base length in pixels
+                    scaleBar.style.width = scaleBarLength + 'px';
+                    scaleLabel.innerHTML = distance.toFixed(2) + ' km';
+                }
+
+                viewer.scene.camera.moveEnd.addEventListener(updateScaleBar);
+                updateScaleBar(); // Initial update
+            }
+
+            createScaleBar(viewer);
+        });
+    </script>
+</body>
+</html>
