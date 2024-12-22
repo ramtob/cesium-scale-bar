@@ -6,9 +6,9 @@
     overflow: hidden;
 }
 
-/* tzgardner */
+/* https://community.cesium.com/t/distance-scale-indicator/10371/11? */
 
-#scaleBox {
+/* #scaleBox {
     padding: 10px 10px;
     bottom: 35px;
     right: 10px;
@@ -46,9 +46,7 @@
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-}
-
-/* Copilot */
+} */
 
 .cesium-scaleBar {
     position: absolute;

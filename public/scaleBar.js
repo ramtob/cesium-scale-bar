@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
         geocoder: false
     });
 
-    const scaleBarElement = document.getElementById("scalebar");
-    const scaleBarTagElement = document.getElementById("scalebartag");
-    console.log(1, scaleBarElement, scaleBarTagElement)
+    // const scaleBarElement = document.getElementById("scalebar");
+    // const scaleBarTagElement = document.getElementById("scalebartag");
+    // console.log(1, scaleBarElement, scaleBarTagElement)
     // Copilot
     let scaleBar;
     let scaleLabel;
@@ -55,7 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var rightPosition = globe.pick(right, viewer.scene);
 
         if (typeof leftPosition == "undefined" || typeof rightPosition == "undefined") {
-            scaleBarTagElement.textContent = "?";
+            // scaleBarTagElement.textContent = "?";
+            scaleLabel.textContent = "?";
             // $("#scalebartag").text("undefined");
             return;
         }
@@ -101,21 +102,21 @@ document.addEventListener('DOMContentLoaded', function () {
             label = distance.toString() + units;
 
             if (units === " km") {
-                scaleBarElement.style.width = ((distance / pixelDistanceInKm) | 0).toString() + "px";
+                // scaleBarElement.style.width = ((distance / pixelDistanceInKm) | 0).toString() + "px";
                 scaleBar.style.width = ((distance / pixelDistanceInKm) | 0).toString() + "px";
             }
             else {
-                scaleBarElement.style.width = ((distance / pixelDistance) | 0).toString() + "px";
+                // scaleBarElement.style.width = ((distance / pixelDistance) | 0).toString() + "px";
                 scaleBar.style.width = ((distance / pixelDistance) | 0).toString() + "px";
             }
 
-            scaleBarTagElement.textContent = label;
+            // scaleBarTagElement.textContent = label;
             scaleLabel.textContent = label;
             // $("#scalebartag").text(label);
         } else {
-            scaleBarElement.style.width = "100px";
+            // scaleBarElement.style.width = "100px";
             scaleBar.style.width = "100px";
-            scaleBarTagElement.textContent = "?";
+            // scaleBarTagElement.textContent = "?";
             scaleLabel.textContent = "?";
             // $("#scalebartag").text("undefined");
         }
