@@ -6,48 +6,6 @@
     overflow: hidden;
 }
 
-/* https://community.cesium.com/t/distance-scale-indicator/10371/11? */
-
-/* #scaleBox {
-    padding: 10px 10px;
-    bottom: 35px;
-    right: 10px;
-    position: absolute;
-    display: inline-block;
-    background: #304458;
-    color: #bacdcc;
-    border-radius: 5px;
-    font-family: Arial;
-    font-size: 14px;
-    font-style: normal;
-    text-align: center;
-    white-space: pre-wrap;
-}
-
-.scale-text {
-    display: inline-block;
-    position: relative;
-    background: #304458;
-    color: #bacdcc;
-    border-radius: 2px;
-    padding: 0px 0px;
-    margin: 0px 0px;
-    font-family: Arial;
-    font-size: 14px;
-    font-style: normal;
-    text-align: center;
-    white-space: pre-wrap;
-}
-
-.scalebar {
-    height: 6px;
-    width: 100px;
-    padding-left: 5%;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-} */
-
 .cesium-scaleBar {
     position: absolute;
     bottom: 10px;
