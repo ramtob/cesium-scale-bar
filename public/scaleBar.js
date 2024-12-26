@@ -18,15 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // const scaleBarTagElement = document.getElementById("scalebartag");
     // console.log(1, scaleBarElement, scaleBarTagElement)
     // Copilot
-    let scaleBar;
-    let scaleLabel;
-
-
-    //Zoom listener
-    viewer.camera.moveEnd.addEventListener(function () {
-        // the camera stopped moving
-        updateScaleBar();
-    });
+    const scaleBar = document.getElementsByClassName('scale-bar')[0];
+    const scaleLabel = document.getElementsByClassName('scale-label')[0];
 
     //
     // Based on https://community.cesium.com/t/distance-scale-indicator/10371/11? 
@@ -122,23 +115,30 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function createScaleBar(viewer) {
-        console.log(2, 'Creating scale bar')
-        var scaleBarContainer = document.createElement('div');
-        scaleBarContainer.className = 'cesium-scaleBar';
-        viewer.container.appendChild(scaleBarContainer);
+    // function createScaleBar(viewer) {
+    //     console.log(2, 'Creating scale bar')
+    //     var scaleBarContainer = document.createElement('div');
+    //     scaleBarContainer.className = 'cesium-scaleBar';
+    //     viewer.container.appendChild(scaleBarContainer);
 
-        scaleBar = document.createElement('div');
-        scaleBar.className = 'scale-bar';
-        scaleBarContainer.appendChild(scaleBar);
+    //     scaleBar = document.createElement('div');
+    //     scaleBar.className = 'scale-bar';
+    //     scaleBarContainer.appendChild(scaleBar);
 
-        scaleLabel = document.createElement('span');
-        scaleBarContainer.appendChild(scaleLabel);
+    //     scaleLabel = document.createElement('span');
+    //     scaleBarContainer.appendChild(scaleLabel);
 
-        viewer.scene.camera.moveEnd.addEventListener(updateScaleBar);
-        viewer.scene.camera.moveStart.addEventListener(updateScaleBar);
-        updateScaleBar(); // Initial update
-    }
+    //     viewer.scene.camera.moveEnd.addEventListener(updateScaleBar);
+    //     viewer.scene.camera.moveStart.addEventListener(updateScaleBar);
+    //     updateScaleBar(); // Initial update
+    // }
 
-    createScaleBar(viewer);
+    // createScaleBar(viewer);
+
+    // Zoom (camera height in Cesium) listener
+    viewer.camera.moveEnd.addEventListener(updateScaleBar);
+    // viewer.camera.moveEnd.addEventListener(function () {
+    //     // the camera stopped moving
+    //     updateScaleBar();
+    // });
 })
